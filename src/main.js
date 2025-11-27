@@ -2,11 +2,15 @@ import './style.css'
 import { marked } from 'marked'
 import matter from 'gray-matter'
 
+// Base path for GitHub Pages deployment
+const BASE_PATH = import.meta.env.BASE_URL
+
 // Router
 class Router {
   constructor() {
     this.routes = {}
     this.currentRoute = null
+    this.basePath = BASE_PATH.replace(/\/$/, '') // Remove trailing slash
 
     window.addEventListener('popstate', () => this.handleRoute())
 
@@ -24,12 +28,18 @@ class Router {
   }
 
   navigate(path) {
-    window.history.pushState({}, '', path)
+    const fullPath = this.basePath + path
+    window.history.pushState({}, '', fullPath)
     this.handleRoute()
   }
 
   handleRoute() {
-    const path = window.location.pathname
+    let path = window.location.pathname
+    // Remove base path from pathname
+    if (this.basePath && path.startsWith(this.basePath)) {
+      path = path.slice(this.basePath.length) || '/'
+    }
+
     const app = document.getElementById('app')
 
     if (path === '/' || path === '/index.html') {
@@ -60,7 +70,7 @@ class BlogManager {
       const postsData = await Promise.all(
         postFiles.map(async (file) => {
           try {
-            const response = await fetch(`/posts/${file}`)
+            const response = await fetch(`${BASE_PATH}posts/${file}`)
             const content = await response.text()
             const { data, content: markdown } = matter(content)
 
