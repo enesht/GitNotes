@@ -1,17 +1,16 @@
 :root {
   --bg-primary: #ffffff;
-  --bg-secondary: #fafafa;
-  --text-primary: #121212;
-  --text-secondary: #666;
-  --text-muted: #999;
-  --accent-color: #326891;
-  --accent-hover: #5a9cd6;
-  --border-color: #e0e0e0;
-  --border-light: #f0f0f0;
+  --bg-secondary: #f8f9fa;
+  --text-primary: #1a1a1a;
+  --text-secondary: #6c757d;
+  --accent-color: #0066cc;
+  --accent-hover: #0052a3;
+  --border-color: #e9ecef;
+  --shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+  --shadow-hover: 0 4px 16px rgba(0, 0, 0, 0.12);
 
-  /* NYT Style Typography */
-  font-family: 'Crimson Pro', Georgia, 'Times New Roman', serif;
-  line-height: 1.75;
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  line-height: 1.6;
   font-weight: 400;
   color: var(--text-primary);
   background-color: var(--bg-primary);
@@ -31,7 +30,7 @@
 body {
   margin: 0;
   min-height: 100vh;
-  background-color: var(--bg-primary);
+  background-color: var(--bg-secondary);
 }
 
 #app {
@@ -40,20 +39,19 @@ body {
   padding: 0;
 }
 
-/* Header - NYT Style */
+/* Header */
 .header {
   background-color: var(--bg-primary);
   border-bottom: 1px solid var(--border-color);
-  padding: 1.25rem 2rem;
+  padding: 1.5rem 2rem;
+  box-shadow: var(--shadow);
   position: sticky;
   top: 0;
   z-index: 100;
-  backdrop-filter: blur(10px);
-  background-color: rgba(255, 255, 255, 0.95);
 }
 
 .header-content {
-  max-width: 1100px;
+  max-width: 900px;
   margin: 0 auto;
   display: flex;
   justify-content: space-between;
@@ -61,16 +59,14 @@ body {
 }
 
 .logo {
-  font-size: 2rem;
-  font-weight: 800;
+  font-size: 1.5rem;
+  font-weight: 700;
   color: var(--text-primary);
   text-decoration: none;
   display: flex;
   align-items: center;
-  gap: 0.75rem;
-  transition: color 0.3s ease;
-  font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
-  letter-spacing: -0.5px;
+  gap: 0.5rem;
+  transition: color 0.2s;
 }
 
 .logo:hover {
@@ -78,158 +74,119 @@ body {
 }
 
 .logo-icon {
-  font-size: 2rem;
+  font-size: 1.8rem;
 }
 
 /* Main Container */
 .container {
-  max-width: 680px;
+  max-width: 900px;
   margin: 0 auto;
-  padding: 4rem 2rem;
+  padding: 3rem 2rem;
 }
 
-/* Home Page - NYT Style */
+/* Home Page */
 .home-title {
-  font-size: 3.5rem;
-  font-weight: 800;
-  margin-bottom: 1rem;
+  font-size: 2.5rem;
+  font-weight: 700;
+  margin-bottom: 0.5rem;
   color: var(--text-primary);
-  line-height: 1.1;
-  letter-spacing: -1.5px;
-  font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
 }
 
 .home-subtitle {
-  font-size: 1.25rem;
+  font-size: 1.1rem;
   color: var(--text-secondary);
-  margin-bottom: 4rem;
+  margin-bottom: 3rem;
   font-weight: 400;
-  line-height: 1.6;
-  border-left: 3px solid var(--accent-color);
-  padding-left: 1.5rem;
-  font-style: italic;
 }
 
 /* Blog List */
 .blog-list {
   display: flex;
   flex-direction: column;
-  gap: 3rem;
+  gap: 1.5rem;
 }
 
 .blog-card {
-  padding: 2.5rem 0;
-  border-bottom: 1px solid var(--border-light);
+  background-color: var(--bg-primary);
+  border-radius: 12px;
+  padding: 2rem;
+  box-shadow: var(--shadow);
   transition: all 0.3s ease;
   cursor: pointer;
   text-decoration: none;
   color: inherit;
   display: block;
-  position: relative;
-}
-
-.blog-card:last-child {
-  border-bottom: none;
 }
 
 .blog-card:hover {
-  transform: translateX(8px);
-}
-
-.blog-card:hover .blog-card-title {
-  color: var(--accent-color);
+  transform: translateY(-4px);
+  box-shadow: var(--shadow-hover);
 }
 
 .blog-card-title {
-  font-size: 2rem;
-  font-weight: 700;
-  margin-bottom: 1rem;
+  font-size: 1.5rem;
+  font-weight: 600;
+  margin-bottom: 0.75rem;
   color: var(--text-primary);
-  line-height: 1.3;
-  transition: color 0.3s ease;
-  letter-spacing: -0.5px;
 }
 
 .blog-card-meta {
   display: flex;
-  gap: 1.5rem;
-  font-size: 0.875rem;
-  color: var(--text-muted);
-  margin-bottom: 1rem;
+  gap: 1rem;
+  font-size: 0.9rem;
+  color: var(--text-secondary);
+  margin-bottom: 0.75rem;
   flex-wrap: wrap;
-  text-transform: uppercase;
-  letter-spacing: 0.5px;
-  font-family: 'Franklin Gothic Medium', Arial, sans-serif;
-  font-weight: 500;
 }
 
 .blog-card-excerpt {
-  font-size: 1.125rem;
+  font-size: 1rem;
   color: var(--text-secondary);
-  line-height: 1.7;
-  margin-bottom: 1.25rem;
+  line-height: 1.6;
 }
 
 .blog-card-tags {
   display: flex;
-  gap: 0.75rem;
-  margin-top: 1.5rem;
+  gap: 0.5rem;
+  margin-top: 1rem;
   flex-wrap: wrap;
 }
 
 .tag {
-  background-color: transparent;
-  border: 1px solid var(--border-color);
-  padding: 0.35rem 0.85rem;
-  border-radius: 2px;
-  font-size: 0.75rem;
+  background-color: var(--bg-secondary);
+  padding: 0.25rem 0.75rem;
+  border-radius: 16px;
+  font-size: 0.85rem;
   color: var(--text-secondary);
-  text-transform: uppercase;
-  letter-spacing: 0.5px;
-  font-family: 'Franklin Gothic Medium', Arial, sans-serif;
-  font-weight: 500;
-  transition: all 0.2s ease;
 }
 
-.tag:hover {
-  background-color: var(--text-primary);
-  color: white;
-  border-color: var(--text-primary);
-}
-
-/* Blog Post - NYT Style */
+/* Blog Post */
 .post-header {
-  margin-bottom: 3rem;
-  padding-bottom: 2.5rem;
+  margin-bottom: 2rem;
+  padding-bottom: 2rem;
   border-bottom: 1px solid var(--border-color);
 }
 
 .post-title {
-  font-size: 3rem;
-  font-weight: 800;
-  margin-bottom: 1.5rem;
+  font-size: 2.5rem;
+  font-weight: 700;
+  margin-bottom: 1rem;
   color: var(--text-primary);
   line-height: 1.2;
-  letter-spacing: -1px;
-  font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
 }
 
 .post-meta {
   display: flex;
-  gap: 2rem;
-  font-size: 0.875rem;
-  color: var(--text-muted);
-  margin-bottom: 1.5rem;
+  gap: 1.5rem;
+  font-size: 1rem;
+  color: var(--text-secondary);
+  margin-bottom: 1rem;
   flex-wrap: wrap;
-  text-transform: uppercase;
-  letter-spacing: 0.5px;
-  font-family: 'Franklin Gothic Medium', Arial, sans-serif;
-  font-weight: 500;
 }
 
 .post-tags {
   display: flex;
-  gap: 0.75rem;
+  gap: 0.5rem;
   flex-wrap: wrap;
 }
 
@@ -237,24 +194,24 @@ body {
   display: inline-flex;
   align-items: center;
   gap: 0.5rem;
-  color: var(--text-secondary);
+  color: var(--accent-color);
   text-decoration: none;
   font-weight: 500;
-  margin-bottom: 3rem;
+  margin-bottom: 2rem;
   transition: color 0.2s;
-  font-size: 0.9rem;
-  text-transform: uppercase;
-  letter-spacing: 0.5px;
-  font-family: 'Franklin Gothic Medium', Arial, sans-serif;
 }
 
 .back-button:hover {
-  color: var(--accent-color);
+  color: var(--accent-hover);
 }
 
-/* Post Content Styling - NYT Style */
+/* Post Content Styling */
 .post-content {
-  font-size: 1.25rem;
+  background-color: var(--bg-primary);
+  padding: 2.5rem;
+  border-radius: 12px;
+  box-shadow: var(--shadow);
+  font-size: 1.05rem;
   line-height: 1.8;
   color: var(--text-primary);
 }
@@ -265,38 +222,32 @@ body {
 .post-content h4,
 .post-content h5,
 .post-content h6 {
-  margin-top: 2.5rem;
-  margin-bottom: 1.25rem;
-  font-weight: 700;
+  margin-top: 2rem;
+  margin-bottom: 1rem;
+  font-weight: 600;
   line-height: 1.3;
   color: var(--text-primary);
-  letter-spacing: -0.5px;
-  font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
 }
 
 .post-content h1 {
-  font-size: 2.25rem;
+  font-size: 2rem;
 }
 
 .post-content h2 {
-  font-size: 1.875rem;
-  padding-bottom: 0.5rem;
-  border-bottom: 1px solid var(--border-light);
+  font-size: 1.6rem;
 }
 
 .post-content h3 {
-  font-size: 1.5rem;
+  font-size: 1.3rem;
 }
 
 .post-content p {
-  margin-bottom: 1.75rem;
+  margin-bottom: 1.5rem;
 }
 
 .post-content a {
   color: var(--accent-color);
   text-decoration: underline;
-  text-decoration-thickness: 1px;
-  text-underline-offset: 3px;
   transition: color 0.2s;
 }
 
@@ -306,69 +257,63 @@ body {
 
 .post-content ul,
 .post-content ol {
-  margin-bottom: 1.75rem;
-  padding-left: 2.5rem;
+  margin-bottom: 1.5rem;
+  padding-left: 2rem;
 }
 
 .post-content li {
-  margin-bottom: 0.75rem;
+  margin-bottom: 0.5rem;
 }
 
 .post-content code {
   background-color: var(--bg-secondary);
-  padding: 0.25rem 0.5rem;
-  border-radius: 3px;
+  padding: 0.2rem 0.4rem;
+  border-radius: 4px;
   font-family: 'Monaco', 'Courier New', monospace;
-  font-size: 0.875em;
-  color: #d73a49;
-  border: 1px solid var(--border-light);
+  font-size: 0.9em;
+  color: #d63384;
 }
 
 .post-content pre {
-  background-color: #f6f8fa;
-  color: #24292e;
+  background-color: #282c34;
+  color: #abb2bf;
   padding: 1.5rem;
-  border-radius: 6px;
+  border-radius: 8px;
   overflow-x: auto;
-  margin-bottom: 1.75rem;
-  border: 1px solid var(--border-light);
-  line-height: 1.6;
+  margin-bottom: 1.5rem;
 }
 
 .post-content pre code {
   background-color: transparent;
   padding: 0;
   color: inherit;
-  font-size: 0.95rem;
-  border: none;
+  font-size: 0.9rem;
 }
 
 .post-content blockquote {
-  border-left: 3px solid var(--text-primary);
-  padding-left: 1.75rem;
-  margin: 2rem 0;
+  border-left: 4px solid var(--accent-color);
+  padding-left: 1.5rem;
+  margin: 1.5rem 0;
   color: var(--text-secondary);
   font-style: italic;
-  font-size: 1.35rem;
-  line-height: 1.7;
 }
 
 .post-content img {
   max-width: 100%;
   height: auto;
-  margin: 2rem 0;
+  border-radius: 8px;
+  margin: 1.5rem 0;
 }
 
 .post-content table {
   width: 100%;
   border-collapse: collapse;
-  margin: 2rem 0;
-  font-size: 1rem;
+  margin: 1.5rem 0;
 }
 
 .post-content table th,
 .post-content table td {
-  padding: 0.875rem;
+  padding: 0.75rem;
   border: 1px solid var(--border-color);
   text-align: left;
 }
@@ -376,96 +321,74 @@ body {
 .post-content table th {
   background-color: var(--bg-secondary);
   font-weight: 600;
-  font-family: 'Franklin Gothic Medium', Arial, sans-serif;
 }
 
 .post-content hr {
   border: none;
   border-top: 1px solid var(--border-color);
-  margin: 3rem 0;
+  margin: 2rem 0;
 }
 
 /* Loading */
 .loading {
   text-align: center;
-  padding: 4rem;
+  padding: 3rem;
   color: var(--text-secondary);
-  font-style: italic;
 }
 
 /* Error */
 .error {
-  background-color: #fff5f5;
-  border: 1px solid #feb2b2;
-  border-radius: 4px;
+  background-color: #fee;
+  border: 1px solid #fcc;
+  border-radius: 8px;
   padding: 1.5rem;
-  color: #c53030;
+  color: #c33;
   text-align: center;
 }
 
 /* Responsive */
 @media (max-width: 768px) {
   .container {
-    padding: 3rem 1.5rem;
+    padding: 2rem 1rem;
   }
 
   .header {
     padding: 1rem 1.5rem;
   }
 
-  .logo {
-    font-size: 1.5rem;
-  }
-
   .home-title {
-    font-size: 2.5rem;
-  }
-
-  .home-subtitle {
-    font-size: 1.1rem;
+    font-size: 2rem;
   }
 
   .post-title {
-    font-size: 2.25rem;
+    font-size: 2rem;
   }
 
   .post-content {
-    font-size: 1.125rem;
+    padding: 1.5rem;
+    font-size: 1rem;
   }
 
   .blog-card {
-    padding: 2rem 0;
+    padding: 1.5rem;
   }
 
   .blog-card-title {
-    font-size: 1.5rem;
-  }
-
-  .blog-card:hover {
-    transform: translateX(4px);
+    font-size: 1.25rem;
   }
 }
 
 @media (max-width: 480px) {
   .home-title {
-    font-size: 2rem;
-    letter-spacing: -1px;
+    font-size: 1.75rem;
   }
 
   .post-title {
-    font-size: 1.875rem;
+    font-size: 1.75rem;
   }
 
   .blog-card-meta,
   .post-meta {
-    font-size: 0.75rem;
-  }
-
-  .post-content {
-    font-size: 1.0625rem;
-  }
-
-  .blog-card-title {
-    font-size: 1.375rem;
+    font-size: 0.85rem;
   }
 }

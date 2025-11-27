@@ -196,21 +196,13 @@ function renderPostPage(post) {
 
 function formatRelativeTime(dateString) {
   const date = new Date(dateString)
-  const now = new Date()
-  const diffMs = now - date
-  const diffSecs = Math.floor(diffMs / 1000)
-  const diffMins = Math.floor(diffSecs / 60)
-  const diffHours = Math.floor(diffMins / 60)
-  const diffDays = Math.floor(diffHours / 24)
-  const diffMonths = Math.floor(diffDays / 30)
-  const diffYears = Math.floor(diffDays / 365)
-
-  if (diffSecs < 60) return 'Az önce'
-  if (diffMins < 60) return `${diffMins} dakika önce`
-  if (diffHours < 24) return `${diffHours} saat önce`
-  if (diffDays < 30) return `${diffDays} gün önce`
-  if (diffMonths < 12) return `${diffMonths} ay önce`
-  return `${diffYears} yıl önce`
+  return date.toLocaleString('tr-TR', {
+    year: 'numeric',
+    month: 'long',
+    day: 'numeric',
+    hour: '2-digit',
+    minute: '2-digit'
+  })
 }
 
 function formatDate(dateString) {
