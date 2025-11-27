@@ -118,7 +118,7 @@ function renderHeader() {
   return `
     <header class="header">
       <div class="header-content">
-        <a href="/" class="logo" data-link>
+        <a href="${BASE_PATH}" class="logo" data-link>
           <span class="logo-icon">📝</span>
           <span>GitNotes</span>
         </a>
@@ -129,11 +129,11 @@ function renderHeader() {
 
 function renderHomePage(posts) {
   const postsHtml = posts.map(post => `
-    <a href="/post/${post.id}" class="blog-card" data-link>
+    <a href="${BASE_PATH}post/${post.id}" class="blog-card" data-link>
       <h2 class="blog-card-title">${post.title}</h2>
       <div class="blog-card-meta">
-        <span>📅 ${formatDate(post.date)}</span>
-        <span>👤 ${post.author}</span>
+        <span>📅 ${formatRelativeTime(post.date)}</span>
+        <span>👤 ${post.author || '@enesht'}</span>
       </div>
       <p class="blog-card-excerpt">${post.excerpt}</p>
       ${post.tags.length > 0 ? `
@@ -162,7 +162,7 @@ function renderPostPage(post) {
       ${renderHeader()}
       <main class="container">
         <div class="error">Yazı bulunamadı</div>
-        <a href="/" class="back-button" data-link>← Ana sayfaya dön</a>
+        <a href="${BASE_PATH}" class="back-button" data-link>← Ana sayfaya dön</a>
       </main>
     `
   }
@@ -172,13 +172,13 @@ function renderPostPage(post) {
   return `
     ${renderHeader()}
     <main class="container">
-      <a href="/" class="back-button" data-link>← Geri</a>
+      <a href="${BASE_PATH}" class="back-button" data-link>← Geri</a>
       <article>
         <div class="post-header">
           <h1 class="post-title">${post.title}</h1>
           <div class="post-meta">
-            <span>📅 ${formatDate(post.date)}</span>
-            <span>👤 ${post.author}</span>
+            <span>📅 ${formatRelativeTime(post.date)}</span>
+            <span>👤 ${post.author || '@enesht'}</span>
           </div>
           ${post.tags.length > 0 ? `
             <div class="post-tags">
@@ -192,6 +192,25 @@ function renderPostPage(post) {
       </article>
     </main>
   `
+}
+
+function formatRelativeTime(dateString) {
+  const date = new Date(dateString)
+  const now = new Date()
+  const diffMs = now - date
+  const diffSecs = Math.floor(diffMs / 1000)
+  const diffMins = Math.floor(diffSecs / 60)
+  const diffHours = Math.floor(diffMins / 60)
+  const diffDays = Math.floor(diffHours / 24)
+  const diffMonths = Math.floor(diffDays / 30)
+  const diffYears = Math.floor(diffDays / 365)
+
+  if (diffSecs < 60) return 'Az önce'
+  if (diffMins < 60) return `${diffMins} dakika önce`
+  if (diffHours < 24) return `${diffHours} saat önce`
+  if (diffDays < 30) return `${diffDays} gün önce`
+  if (diffMonths < 12) return `${diffMonths} ay önce`
+  return `${diffYears} yıl önce`
 }
 
 function formatDate(dateString) {
